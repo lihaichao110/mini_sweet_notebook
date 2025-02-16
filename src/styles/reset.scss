@@ -1,0 +1,38 @@
+// 我们使用box-sizing:border-box， 但微信不支持*选择器
+view,
+scroll-view,
+swiper,
+movable-view,
+cover-view,
+icon,
+text,
+rich-text,
+progress,
+button,
+checkbox,
+form,
+input,
+label,
+picker,
+picker-view,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+functional-page-navigator,
+audio,
+image,
+video,
+camera,
+live-player,
+live-pusher,
+map,
+canvas,
+open-data,
+web-view,
+ad {
+  box-sizing: border-box;
+}
+
+

@@ -1,0 +1,42 @@
+@import '@/styles/index.scss';
+
+.custom-tab-bar-component {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #fff;
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: $color;
+    padding: 8px 0;
+
+    &-label {
+      margin-top: 2px;
+    }
+  }
+
+  .tab-bar-middle-action {
+    $size: 34px;
+    position: relative;
+    top: -2px;
+
+    .tab-bar-add-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $size;
+      height: $size;
+      font-size: 12px;
+      color: white;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #8ee3f0 5.02%, #61c1e4 87.97%);
+      box-shadow: 4px 4px 8px 0 rgba(107, 218, 236, 0.3);
+    }
+  }
+}

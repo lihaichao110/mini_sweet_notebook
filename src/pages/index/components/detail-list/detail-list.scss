@@ -1,0 +1,58 @@
+@import '@/styles/index.scss';
+
+.detail-list {
+  width: 100%;
+  height: auto;
+  padding: 0 12px;
+
+  &-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    position: relative;
+
+    &-info {
+      display: flex;
+      align-items: center;
+
+      &-icon {
+        background-color: $background;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &-text {
+        font-size: 16px;
+        color: $color;
+        margin-left: 12px;
+      }
+    }
+
+    &-consume {
+      font-size: 14px;
+      color: $color;
+    }
+  }
+
+  &-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: $border;
+    transform: scaleY(0.2);
+  }
+
+  // 最后一个 item 的 after 高度为 0
+  &-item:last-child::after {
+    height: 0;
+  }
+}
