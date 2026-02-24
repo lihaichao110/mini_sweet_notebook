@@ -16,6 +16,7 @@
     height: auto;
     padding: 0 12px;
     padding-bottom: calc(env(safe-area-inset-bottom) + 68px);
+    box-sizing: border-box;
 
     &-overview {
       width: 100%;
@@ -23,6 +24,7 @@
       background-color: #ffffff;
       padding: 0 12px 12px;
       border-radius: 8px;
+      box-sizing: border-box;
 
       &-content {
         display: flex;

@@ -1,4 +1,4 @@
-@import '@/styles/index.scss';
+@import "@/styles/index.scss";
 
 .action-menu {
   width: 100%;
@@ -7,8 +7,12 @@
   .at-float-layout__container {
     height: 90%;
     border-radius: 8px 8px 0 0;
+    overflow: hidden;
     .layout-body {
-      padding: 12px;
+      padding: 0;
+      &__content {
+        padding: none;
+      }
     }
   }
 
@@ -16,6 +20,21 @@
     text-align: right;
     color: $color;
     font-size: 18px;
+    padding: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    background: #fff;
+    z-index: 99;
+  }
+
+  &-scroll {
+    width: 100%;
+    margin-top: 52px;
+    height: 100vh;
   }
 
   &-content {
@@ -28,6 +47,7 @@
       justify-content: center;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 20px;
 
       &-icon {
         width: 50px;
@@ -37,12 +57,96 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 8px;
+        margin-bottom: 4px;
       }
 
       &-label {
+        color: $subColor;
+      }
+    }
+  }
+
+  &-enter {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px 3px rgba(0, 0, 0, 0.2);
+    @include ios-inspector;
+
+    &-count {
+      width: 100%;
+      padding: 12px;
+      box-sizing: border-box;
+
+      &-number {
+        text-align: right;
+        font-size: 30px;
         color: $color;
       }
+
+      &-notes {
+        border-radius: 4px;
+        background-color: $background;
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        margin: 12px 0 0;
+        font-size: 14px;
+        color: $color;
+      }
+    }
+
+    &-keyboard {
+      width: 100%;
+
+      &-row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        &-column {
+          flex: 1;
+          text-align: center;
+          color: $color;
+          padding: 12px 0;
+          font-size: 20px;
+          border-top: 1px solid $border-light;
+          border-left: 1px solid $border-light;
+          transition: background-color 0.2s;
+
+          &:first-child {
+            border-left: none;
+          }
+
+          &-active {
+            background-color: red;
+          }
+        }
+
+        &:last-child {
+          border-bottom: 1px solid $border-light;
+        }
+      }
+    }
+    &.isSelected {
+      display: block;
+      animation: slideUp 0.25s ease-out forwards;
+    }
+  }
+
+  // 定义关键帧动画
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 }

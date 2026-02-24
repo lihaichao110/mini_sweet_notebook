@@ -11,9 +11,9 @@ export default defineConfig(async (merge, { command, mode }) => {
     date: '2025-2-8',
     designWidth: 375,
     deviceRatio: {
-      640: 2.34 / 2,
-      750: 1,
-      828: 1.81 / 2,
+      // 640: 2.34 / 2,
+      750: 1 / 2,
+      // 828: 1.81 / 2,
       375: 2 / 1,
     },
     sourceRoot: 'src',
@@ -32,7 +32,7 @@ export default defineConfig(async (merge, { command, mode }) => {
     cache: {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
-    sass:  {
+    sass: {
       resource: path.resolve(__dirname, "..", "src/styles/custom-variables.scss")
     },
     mini: {
@@ -43,7 +43,7 @@ export default defineConfig(async (merge, { command, mode }) => {
         pxtransform: {
           enable: true,
           config: {
-
+            selectorBlackList: ['ignore']
           }
         },
         url: {
@@ -71,7 +71,7 @@ export default defineConfig(async (merge, { command, mode }) => {
           },
         });
         if (process.env.TARO_APP_NODE_ENV === 'analyzer') {
-          chain.plugin('analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin , [])
+          chain.plugin('analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin, [])
         }
       }
     },

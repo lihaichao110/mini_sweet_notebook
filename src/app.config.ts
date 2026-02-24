@@ -2,6 +2,7 @@ export default defineAppConfig({
   pages: [
     'pages/index/index',
     'pages/user/user',
+    'pages/edit-nickname/edit-nickname'
   ],
   lazyCodeLoading: 'requiredComponents',
   window: {
@@ -26,5 +27,5 @@ export default defineAppConfig({
         text: '我的'
       }
     ]
-  }
+  },
 })

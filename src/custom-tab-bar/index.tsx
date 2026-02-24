@@ -1,65 +1,67 @@
-import { View, Text } from '@tarojs/components'
-import Icon from '@/components/Icon/Icon'
-import { HIconType } from '@/types/icons'
-import Taro from '@tarojs/taro'
-import { grey, primary } from '@/constants/color'
-import useMenurStore from '@/store/menu'
-import useTabbarStore from '@/store/tabbar'
-import './index.scss'
+import { View, Text } from "@tarojs/components";
+import Icon from "@/components/Icon/Icon";
+import { HIconType } from "@/types/icons";
+import Taro from "@tarojs/taro";
+import { grey, primary } from "@/constants/color";
+import useMenurStore from "@/store/menu";
+import useTabbarStore from "@/store/tabbar";
+import "./index.scss";
 
 interface TabBarItem {
   /** 跳转路径 */
-  pagePath?: string
+  pagePath?: string;
   /** 选择后的图标 */
-  selectedIcon?: HIconType
+  selectedIcon?: HIconType;
   /** 默认图标 */
-  icon?: HIconType
+  icon?: HIconType;
   /** 文字 */
-  text?: string
+  text?: string;
   /** 自定义渲染 */
-  customRender?: () => JSX.Element
+  customRender?: () => JSX.Element;
 }
 
-const classPrefix = 'custom-tab-bar-component'
+const classPrefix = "custom-tab-bar-component";
 const CustomTabBar = () => {
-  const { activeIndex, setActiveIndex } = useTabbarStore()
-  const { setVisible } = useMenurStore()
+  const { activeIndex, setActiveIndex } = useTabbarStore();
+  const { setVisible } = useMenurStore();
 
   const QuickActionBtn = () => (
-    <View className='tab-bar-middle-action' onClick={() => setVisible(true)}>
-      <View className='tab-bar-add-btn' >
-        <Icon name='tianjia' />
+    <View className="tab-bar-middle-action" onClick={() => setVisible(true)}>
+      <View className="tab-bar-add-btn">
+        <Icon name="tianjia" />
       </View>
     </View>
-  )
+  );
 
   const TabBarList: TabBarItem[] = [
     {
-      pagePath: '/pages/index/index',
-      selectedIcon: 'shouye',
-      icon: 'shouye1',
-      text: '首页'
+      pagePath: "/pages/index/index",
+      selectedIcon: "shouye",
+      icon: "shouye1",
+      text: "首页",
     },
     {
-      customRender: () => <QuickActionBtn />
+      customRender: () => <QuickActionBtn />,
     },
     {
-      pagePath: '/pages/user/user',
-      selectedIcon: 'wode-F',
-      icon: 'my',
-      text: '我的'
-    }
-  ]
+      pagePath: "/pages/user/user",
+      selectedIcon: "wode-F",
+      icon: "my",
+      text: "我的",
+    },
+  ];
 
-  const handleClick = async (path, index) => {
-    await Taro.switchTab({ url: path })
-    setActiveIndex(index)
-    console.log(path, index, 'handleClick')
-  }
+  const handleClick = (path, index) => {
+    Taro.switchTab({ url: path });
+    setActiveIndex(index);
+    console.log(path, index, "handleClick");
+  };
   return (
     <View className={classPrefix}>
-      {
-        TabBarList.map((item, index) => item.customRender ? item.customRender() : (
+      {TabBarList.map((item, index) =>
+        item.customRender ? (
+          item.customRender()
+        ) : (
           <View
             key={item.pagePath}
             className={`${classPrefix}-item`}
@@ -79,16 +81,14 @@ const CustomTabBar = () => {
               {item.text}
             </Text>
           </View>
-        ))
-      }
+        )
+      )}
     </View>
-  )
-}
+  );
+};
 
 CustomTabBar.options = {
   addGlobalClass: true,
-}
+};
 
-
-export default CustomTabBar
-
+export default CustomTabBar;
